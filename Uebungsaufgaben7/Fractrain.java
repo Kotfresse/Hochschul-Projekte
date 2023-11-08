@@ -1,3 +1,5 @@
+
+
 public class Fractrain {
     public static void main(String[] args) {
         Fraction[] fractions = new Fraction[14];
@@ -18,19 +20,39 @@ public class Fractrain {
 
         Fraction b = new Fraction(8, 1);
         Fraction z= new Fraction(1,1);
+        Fraction größteZahl = new Fraction(1,1);
+        Fraction xZahl= new Fraction(1,1);
         int c=0;
-        for(int i =0; i<3825;i++){
-            fractions[c%14]=fractions[c%14].multiply(b);
-            System.out.println("Fraction "+c+" is "+fractions[c%14]+" \n");
-            if(fractions[c%14].isInteger()){
-                z=fractions[c%14];
-                System.out.println("Z is currently: "+z+"\n");
+        int AnzahlInteger=0;
+        int AnzahlDerDurchläufe=0;
+        int StelleGrößteZahl=0;
+
+        System.out.print(b.getNumerator()+", ");
+        while(AnzahlInteger<3825){
+            Fraction f=fractions[c%14].multiply(b);
+            //System.out.println("Fraction "+c+" is "+fractions[c%14]+" \n");
+            if(AnzahlDerDurchläufe==8000){
+                xZahl=f;
+            }
+            if(f.isInteger()){
+                z=f;
+                System.out.print(z.getNumerator()+", ");
+                if(größteZahl.getNumerator().compareTo(z.getNumerator())<0){
+                    größteZahl=z;
+                    StelleGrößteZahl=AnzahlDerDurchläufe;
+                }
                 b=z;
                 c=0;
+                AnzahlInteger++;
+                AnzahlDerDurchläufe++;
                 continue;
             }
             c++;
             
         }
+        System.out.println("\n"+AnzahlDerDurchläufe);
+        System.out.println("\n"+"Die 8000. Zahl war : "+xZahl.getNumerator()+" und kommen nach "+""+" Durchläufen.");
+        System.out.println("\n"+"Die größte Zahl war : "+größteZahl.getNumerator()+" und kommen nach "+StelleGrößteZahl+" Durchläufen.");
+
     }
 }
