@@ -32,6 +32,11 @@ final public class Fraction extends Number{
          }else{
              System.out.println("Helen*Lennard is not an integer");
          }
+         Fraction neu= new Fraction(17, 91);
+         Fraction b = new Fraction(8, 1);
+         Fraction h = new Fraction(136, 91);
+         System.out.println(MyMath.gcd(h.getNumerator(), h.getDenominator()));
+         System.out.println(neu.multiply(b));
          */
     }
     //private Fraction(){} // private constructor

@@ -18,11 +18,18 @@ public class Fractrain {
 
         Fraction b = new Fraction(8, 1);
         Fraction z= new Fraction(1,1);
+        int c=0;
         for(int i =0; i<3825;i++){
-            fractions[i%14]=fractions[i%14].multiply(b);
-            if(fractions[i%14].isInteger()){
-                z=fractions[i%14];
+            fractions[c%14]=fractions[c%14].multiply(b);
+            System.out.println("Fraction "+c+" is "+fractions[c%14]+" \n");
+            if(fractions[c%14].isInteger()){
+                z=fractions[c%14];
+                System.out.println("Z is currently: "+z+"\n");
+                b=z;
+                c=0;
+                continue;
             }
+            c++;
             
         }
     }
