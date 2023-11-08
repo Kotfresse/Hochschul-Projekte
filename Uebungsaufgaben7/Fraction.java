@@ -1,34 +1,38 @@
 import java.math.BigInteger;
 final public class Fraction extends Number{
     private BigInteger numerator, denominator;
+    //Keep in mind that the Fraction itself gets changed when you do operations on it or not
     public static void main(String[] args) {
-        Fraction Alex = new Fraction(1,2);
-        Fraction Flaucher = new Fraction("2", "2");
-        Fraction Helen = new Fraction(BigInteger.valueOf(3), BigInteger.valueOf(2));
-        Fraction Lennard = new Fraction(2, 1);
-        //System.out.println(Alex.toString());
-        //System.out.println(Flaucher.toString());
-        //System.out.println(Helen.toString());
-        //System.out.println(Alex.add(Flaucher));
-        //System.out.println(MyMath.gcd(BigInteger.valueOf(2), BigInteger.valueOf(2)));
-        System.out.println(Lennard);
-        if(Flaucher.isInteger()){
-            System.out.println("Flaucher is an integer");
-        }else{
-            System.out.println("Flaucher is not an integer");
-        }
-
-        if(Helen.isInteger()){
-            System.out.println("Helen is an integer");
-        }else{
-            System.out.println("Helen is not an integer");
-        }
-        System.out.println(Helen.multiply(Lennard));
-        if(Helen.multiply(Lennard).isInteger()){
-            System.out.println("Helen*Lennard is an integer");
-        }else{
-            System.out.println("Helen*Lennard is not an integer");
-        }
+        /*
+         Fraction Alex = new Fraction(1,2);
+         Fraction Flaucher = new Fraction("6", "3");
+         Fraction Helen = new Fraction(BigInteger.valueOf(3), BigInteger.valueOf(2));
+         Fraction Lennard = new Fraction(2, 1);
+         System.out.println(Alex.toString());
+         System.out.println(Flaucher.toString());
+         System.out.println(Helen.toString());
+         System.out.println(Alex.add(Flaucher));
+         System.out.println(MyMath.gcd(BigInteger.valueOf(2), BigInteger.valueOf(2)));
+         if(Flaucher.isInteger()){
+             System.out.println("Flaucher is an integer");
+         }else{
+             System.out.println("Flaucher is not an integer");
+         }
+         
+         if(Helen.isInteger()){
+             System.out.println("Helen is an integer");
+         }else{
+             System.out.println("Helen is not an integer");
+         }
+         System.out.println(Helen);
+         System.out.println(Lennard);
+         System.out.println(Helen.multiply(Lennard));
+         if(Helen.multiply(Lennard).isInteger()){
+             System.out.println("Helen*Lennard is an integer");
+         }else{
+             System.out.println("Helen*Lennard is not an integer");
+         }
+         */
     }
     //private Fraction(){} // private constructor
     public Fraction(long numerator, long denominator) {
@@ -70,30 +74,33 @@ final public class Fraction extends Number{
     public Fraction add(Fraction r){
         BigInteger num = numerator.multiply(r.denominator).add(r.numerator.multiply(denominator).divide(denominator));
         BigInteger den = denominator.multiply(r.denominator);
-        this.numerator=this.numerator.divide(MyMath.gcd(this.numerator, this.denominator));
-        this.denominator=this.denominator.divide(MyMath.gcd(this.numerator, this.denominator));
+        BigInteger gcd = MyMath.gcd(num, den);
+        this.numerator=this.numerator.divide(gcd);
+        this.denominator=this.denominator.divide(gcd);
         return new Fraction(num, den);
     }
     public Fraction substract(Fraction r){
         BigInteger num = numerator.multiply(r.denominator).subtract(r.numerator.multiply(denominator));
         BigInteger den = denominator.multiply(r.denominator);
-        this.numerator=this.numerator.divide(MyMath.gcd(this.numerator, this.denominator));
-        this.denominator=this.denominator.divide(MyMath.gcd(this.numerator, this.denominator));
+        BigInteger gcd = MyMath.gcd(num, den);
+        this.numerator=this.numerator.divide(gcd);
+        this.denominator=this.denominator.divide(gcd);
         return new Fraction(num, den);
     }
     public Fraction multiply (Fraction r){
         BigInteger num = numerator.multiply(r.numerator);
         BigInteger den = denominator.multiply(r.denominator);
-        System.out.println("gcd "+MyMath.gcd(this.numerator, this.denominator));
-        this.denominator=this.denominator.divide(MyMath.gcd(num, den));
-        this.numerator=this.numerator.divide(MyMath.gcd(num, den));
+        BigInteger gcd = MyMath.gcd(num, den);
+        num=num.divide(gcd);
+        den=den.divide(gcd);
         return new Fraction(num, den);
     }
     public Fraction divide (Fraction r){
         BigInteger num = numerator.multiply(r.denominator);
         BigInteger den = denominator.multiply(r.numerator);
-        this.numerator=this.numerator.divide(MyMath.gcd(this.numerator, this.denominator));
-        this.denominator=this.denominator.divide(MyMath.gcd(this.numerator, this.denominator));
+        BigInteger gcd = MyMath.gcd(num, den);
+        this.numerator=this.numerator.divide(gcd);
+        this.denominator=this.denominator.divide(gcd);
         return new Fraction(num, den);
     }
     public String toString(){
