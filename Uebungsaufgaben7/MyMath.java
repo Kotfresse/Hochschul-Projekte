@@ -253,7 +253,8 @@ public class MyMath {
         return gcd(b%a, a);
     }
     public static BigInteger gcd(BigInteger a, BigInteger b) {
-        if (a.equals(BigInteger.ZERO)) {
+        //check if anything is negative
+        if (a.compareTo(BigInteger.ZERO) == 0) {
             return b;
         }
         return gcd(b.mod(a), a);
