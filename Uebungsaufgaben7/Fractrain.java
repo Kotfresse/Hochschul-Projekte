@@ -22,11 +22,11 @@ public class Fractrain {
             System.out.println(f);
         }
         Fraction b = new Fraction(128, 1);
-        Fraction groeßtezahl = new Fraction(1,1);
-        Fraction xZahl= new Fraction(1,1);
+        //Fraction groeßtezahl = new Fraction(1,1);
+        //Fraction xZahl= new Fraction(1,1);
         int c=0;
         int anzahlInteger=1;
-        int stelleGroeßteZahl=0;
+        //int stelleGroeßteZahl=0;
 
         System.out.println("1: "+b.getNumerator());
         while(anzahlInteger<74708){
@@ -40,20 +40,20 @@ public class Fractrain {
                 }
                 c++;
             }
-            if(b.getNumerator().compareTo(groeßtezahl.getNumerator())==1 && anzahlInteger<44971){
-                groeßtezahl=b;
-                stelleGroeßteZahl=anzahlInteger;
-            }
-            if(anzahlInteger==10652){
-                xZahl=b;
-            }
+            //if(b.getNumerator().compareTo(groeßtezahl.getNumerator())==1 && anzahlInteger<44971){
+            //    groeßtezahl=b;
+            //    stelleGroeßteZahl=anzahlInteger;
+            //}
+            //if(anzahlInteger==10652){
+            //    xZahl=b;
+            //}
             if(anzahlInteger<=3184)
             System.out.println(anzahlInteger+": "+b.getNumerator());
 
         }
         System.out.println(anzahlInteger+": "+b.getNumerator());
-        System.out.println("Zahl an 10652 : "+xZahl);
-        System.out.println("Die groesste Zahl war : "+groeßtezahl.getNumerator()+" und kommen nach "+stelleGroeßteZahl+ " Integer.");
+        //System.out.println("Zahl an 10652 : "+xZahl);
+        //System.out.println("Die groesste Zahl war : "+groeßtezahl.getNumerator()+" und kommen nach "+stelleGroeßteZahl+ " Integer.");
 
     }
 }
