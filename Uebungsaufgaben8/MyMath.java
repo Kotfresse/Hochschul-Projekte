@@ -1,6 +1,6 @@
 
 /**
- * @author Tri Nguyen
+ * @author Tri Nguyen, Leonard Winter
  **/
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -523,6 +523,9 @@ public class MyMath {
     }
     public static double sqrt(double x) {
         return Math.sqrt(x);
+    }
+    public static double atan(double x) {
+        return Math.atan(x);
     }
 
 }
