@@ -1,6 +1,6 @@
 
 /**
- * @author Tri Nguyen, Leonard Winter
+ * @author Tri Nguyen
  **/
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -314,6 +314,10 @@ public class MyMath {
         mergesort(floats);
         return floats;
     }
+    public static Fraction[] mergeSort(Fraction[] fractions){
+        mergesort(fractions);
+        return fractions;
+    }
     private static void mergesort(int[] arr) {
         if (arr == null) {
             return;
@@ -443,6 +447,42 @@ public class MyMath {
 
             while (i < left.length && j < right.length) {
                 if (left[i] < right[j]) {
+                    arr[k++] = left[i++];
+                } else {
+                    arr[k++] = right[j++];
+                }
+            }
+
+            while (i < left.length) {
+                arr[k++] = left[i++];
+            }
+
+            while (j < right.length) {
+                arr[k++] = right[j++];
+            }
+        }
+    }
+    private static void mergesort(Fraction[] arr) {
+        if (arr == null) {
+            return;
+        }
+
+        if (arr.length > 1) {
+            int mid = arr.length / 2;
+
+            Fraction[] left = new Fraction[mid];
+            Fraction[] right = new Fraction[arr.length - mid];
+
+            System.arraycopy(arr, 0, left, 0, mid);
+            System.arraycopy(arr, mid, right, 0, arr.length - mid);
+
+            mergeSort(left);
+            mergeSort(right);
+
+            int i = 0, j = 0, k = 0;
+
+            while (i < left.length && j < right.length) {
+                if (left[i].compareTo(right[j]) < 0) {
                     arr[k++] = left[i++];
                 } else {
                     arr[k++] = right[j++];
