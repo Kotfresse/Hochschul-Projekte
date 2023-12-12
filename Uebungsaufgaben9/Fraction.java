@@ -139,6 +139,9 @@ final public class Fraction extends Number implements Comparable<Fraction>{
         return new Fraction(num, den).reduce();
     }
     public Fraction divide (Fraction r){
+        if(denominator.equals(BigInteger.ZERO) || r.denominator.equals(BigInteger.ZERO)){
+            return new Fraction(BigInteger.ZERO, BigInteger.ZERO);
+        }
         BigInteger num = numerator.multiply(r.denominator);
         BigInteger den = denominator.multiply(r.numerator);
         return new Fraction(num, den).reduce();
