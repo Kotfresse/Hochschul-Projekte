@@ -1,4 +1,6 @@
-
+/**
+ * @author Tri Nguyen
+ **/
 public class PrimeTree {
 
     public static void main(String[] args) {

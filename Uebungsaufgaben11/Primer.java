@@ -1,3 +1,6 @@
+/**
+ * @author Tri Nguyen
+ **/
 public class Primer extends Thread {
 
     private int p; // the prime number of this Primer

@@ -1,5 +1,6 @@
-import java.util.concurrent.ExecutorService;
-
+/**
+ * @author Tri Nguyen
+ **/
 public class SevenColumnPrimes extends Thread {
     public static void main(String[] args) {
         
