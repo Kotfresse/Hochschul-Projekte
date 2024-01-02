@@ -9,9 +9,9 @@ public class Board {
     public static void main(String[] args) {
         generateBoard();
         printBoard();
-        while(true){
+        while (true) {
 
-            while(turn){
+            while (turn) {
                 switch (System.console().readLine().toUpperCase()) {
                     case "N":
                         move(Direction.N, player);
@@ -39,7 +39,7 @@ public class Board {
                         break;
                 }
             }
-            while(!turn){
+            while (!turn) {
                 switch (System.console().readLine().toUpperCase()) {
                     case "N":
                         move(Direction.N, player2);
@@ -68,7 +68,6 @@ public class Board {
                 }
             }
         }
-        
 
     }
 
@@ -79,7 +78,7 @@ public class Board {
         int[] position = playerPosition(p);
         int x = position[0];
         int y = position[1];
-        
+
         switch (D) {
             case N:
                 if (x == 0 || g_board[x - 1][y].toString().equals("W") || g_board[x - 1][y].toString().equals("B")) {
@@ -88,7 +87,7 @@ public class Board {
                 } else {
 
                     g_board[x - 1][y] = g_board[x][y];
-                    p.addScore((board[x-1][y].multiply(board[x-1][y]).doubleValue()));
+                    p.addScore((board[x - 1][y].multiply(board[x - 1][y]).doubleValue()));
                     g_board[x][y] = new Fraction(0, 1).toString();
                     board[x][y] = new Fraction(0, 1);
                     turn = !turn;
@@ -101,7 +100,7 @@ public class Board {
                 } else {
 
                     g_board[x + 1][y] = p.toString();
-                    p.addScore((board[x+1][y].multiply(board[x+1][y]).doubleValue()));
+                    p.addScore((board[x + 1][y].multiply(board[x + 1][y]).doubleValue()));
                     g_board[x][y] = new Fraction(0, 1).toString();
                     board[x][y] = new Fraction(0, 1);
                     turn = !turn;
@@ -114,7 +113,7 @@ public class Board {
                 } else {
 
                     g_board[x][y + 1] = g_board[x][y];
-                    p.addScore((board[x][y+1].multiply(board[x][y+1]).doubleValue()));
+                    p.addScore((board[x][y + 1].multiply(board[x][y + 1]).doubleValue()));
                     g_board[x][y] = new Fraction(0, 1).toString();
                     board[x][y] = new Fraction(0, 1);
                     turn = !turn;
@@ -127,14 +126,15 @@ public class Board {
                 } else {
 
                     g_board[x][y - 1] = g_board[x][y];
-                    p.addScore((board[x][y-1].multiply(board[x][y-1]).doubleValue()));
+                    p.addScore((board[x][y - 1].multiply(board[x][y - 1]).doubleValue()));
                     g_board[x][y] = new Fraction(0, 1).toString();
                     board[x][y] = new Fraction(0, 1);
                     turn = !turn;
                 }
                 break;
             case NO:
-                if (x == 7 || y == 7 || g_board[x + 1][y + 1].toString().equals("W") || g_board[x + 1][y + 1].toString().equals("B")) {
+                if (x == 7 || y == 7 || g_board[x + 1][y + 1].toString().equals("W")
+                        || g_board[x + 1][y + 1].toString().equals("B")) {
                     System.out.println("You can't move there");
                     System.console().readLine();
                 } else if (p == Player.White) {
@@ -143,14 +143,15 @@ public class Board {
                 } else {
 
                     g_board[x - 1][y + 1] = g_board[x][y];
-                    p.addScore((board[x-1][y+1].multiply(board[x-1][y+1]).doubleValue()));
+                    p.addScore((board[x - 1][y + 1].multiply(board[x - 1][y + 1]).doubleValue()));
                     g_board[x][y] = new Fraction(0, 1).toString();
                     board[x][y] = new Fraction(0, 1);
                     turn = !turn;
                 }
                 break;
             case SW:
-                if (x == 7 || y == 0 || g_board[x + 1][y - 1].toString().equals("W") || g_board[x + 1][y - 1].toString().equals("B")) {
+                if (x == 7 || y == 0 || g_board[x + 1][y - 1].toString().equals("W")
+                        || g_board[x + 1][y - 1].toString().equals("B")) {
                     System.out.println("You can't move there");
                 }
                 if (p == Player.Black) {
@@ -159,7 +160,7 @@ public class Board {
                 } else {
 
                     g_board[x - 1][y + 1] = g_board[x][y];
-                    p.addScore((board[x-1][y+1].multiply(board[x-1][y+1]).doubleValue()));
+                    p.addScore((board[x - 1][y + 1].multiply(board[x - 1][y + 1]).doubleValue()));
                     g_board[x][y] = new Fraction(0, 1).toString();
                     board[x][y] = new Fraction(0, 1);
                     turn = !turn;
@@ -234,47 +235,6 @@ public class Board {
         }
     }
 
-    /*
-     * public static void generateBoard() {
-     * for (int i = 0; i < 8; i++) {
-     * for (int j = 0; j < 8; j++) {
-     * if (i == 3 && j == 3 || i == 4 && j == 4) {
-     * board[i][j] = new Fraction(0, 1);
-     * } else {
-     * board[i][j] = generateFraction();
-     * }
-     * }
-     * }
-     * }
-     */
-
-    /*
-     * public Fraction getBoard(int i, int j) {
-     * return board[i][j];
-     * }
-     */
-
-    /*
-     * public static void printBoard() {
-     * for (int i = 0; i < 8; i++) {
-     * System.out.print("[ ");
-     * for (int j = 0; j < 8; j++) {
-     * int k = 7 - board[i][j].toString().length();
-     * for (int l = 0; l < k; l++) {
-     * System.out.print(" ");
-     * }
-     * System.out.print("[" + board[i][j].toString() + "] ");
-     * }
-     * System.out.println("]");
-     * System.out.print("|");
-     * for (int o = 0; o < 81; o++) {
-     * System.out.print("-");
-     * }
-     * System.out.println("|");
-     * }
-     * }
-     */
-
     public static Fraction generateFraction() {
         // generates random number between 1 and 1000
         while (true) {
@@ -288,9 +248,11 @@ public class Board {
             }
         }
     }
+
     public static void actualizeScore(Player p) {
-        System.out.print(p.toString()+": "+p.score());
+        System.out.print(p.toString() + ": " + p.score());
     }
+
     public static void actualizeBoard() {
         for (int i = 2; i < 21; i++) {
             System.out.print("\033[2K");
@@ -302,10 +264,11 @@ public class Board {
             }
             // set the curser to the beginning of the line
         }
-        System.out.println(player.toString()+": "+player.score() + " "+player2.toString()+": "+player2.score());
-        if(turn){
+        System.out
+                .println(player.toString() + ": " + player.score() + " " + player2.toString() + ": " + player2.score());
+        if (turn) {
             System.out.println("White's turn");
-        }else{
+        } else {
             System.out.println("Black's turn");
         }
         System.out.print("\033[2;1H");
@@ -316,12 +279,12 @@ public class Board {
                 }
             }
         }
-        if(player.score() > 47){
+        if (player.score() > 47) {
             System.out.println("White wins");
             System.out.flush();
             System.exit(0);
         }
-        if(player2.score() > 47){
+        if (player2.score() > 47) {
             System.out.println("Black wins");
             System.exit(0);
         }
