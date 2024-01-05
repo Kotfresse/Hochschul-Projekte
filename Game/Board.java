@@ -7,6 +7,12 @@ public class Board {
     private static boolean turn = true;
 
     public static void main(String[] args) {
+        System.out.print("\033[2;1H");
+        for (int i = 0; i < 22; i++) {
+            System.out.print("\033[2K");
+            System.out.print("\033[" + (i) + ";1H");
+        }
+        System.out.print("\033[2;1H");
         generateBoard();
         printBoard();
         while (true) {
