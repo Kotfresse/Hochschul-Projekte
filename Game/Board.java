@@ -1,4 +1,6 @@
-
+/**
+ * @author Tri Nguyen, Richard Müller, Leonard Winter
+ **/
 public class Board {
     private static Fraction[][] board = new Fraction[8][8];// 0 bis 7
     private static String[][] g_board = new String[8][8];
