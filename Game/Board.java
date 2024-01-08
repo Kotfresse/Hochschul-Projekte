@@ -77,9 +77,6 @@ public class Board {
 
     }
 
-    public Board() {
-    }
-
     public static void move(Direction D, Player p) {
         int[] position = playerPosition(p);
         int x = position[0];
@@ -244,8 +241,8 @@ public class Board {
     public static Fraction generateFraction() {
         // generates random number between 1 and 1000
         while (true) {
-            int numerator = (int) (Math.random() * 1000 + 1);
-            int denominator = (int) (Math.random() * 1000 + 1);
+            int numerator = (int) (Math.random() * 999 + 1);
+            int denominator = (int) (Math.random() * 999 + 1);
             if (new Fraction(numerator, denominator).doubleValue() < 2
                     && new Fraction(numerator, denominator).doubleValue() > 1
                     && new Fraction(numerator, denominator).getNumerator().intValue() > 9
@@ -292,7 +289,9 @@ public class Board {
         }
         if (player2.score() > 47) {
             System.out.println("Black wins");
+            System.out.flush();
             System.exit(0);
         }
+        
     }
 }
