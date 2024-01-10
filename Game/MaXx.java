@@ -1,7 +1,7 @@
 /**
  * @author Tri Nguyen, Richard Müller, Leonard Winter
  **/
-public class Board {
+public class MaXx {
     private static Fraction[][] board = new Fraction[8][8];// 0 bis 7
     private static String[][] g_board = new String[8][8];
     private static Player player = Player.White;
@@ -17,62 +17,133 @@ public class Board {
         System.out.print("\033[2;1H");
         generateBoard();
         printBoard();
-        while (true) {
-
-            while (turn) {
-                switch (System.console().readLine().toUpperCase()) {
-                    case "N":
-                        move(Direction.N, player);
-                        break;
-                    case "O":
-                        move(Direction.O, player);
-                        break;
-                    case "S":
-                        move(Direction.S, player);
-                        break;
-                    case "W":
-                        move(Direction.W, player);
-                        break;
-                    case "NO":
-                        move(Direction.NO, player);
-                        break;
-                    case "SW":
-                        move(Direction.SW, player);
-                        break;
-                    case "STOP":
-                        System.exit(0);
-                        break;
-                    default:
-                        System.out.println("Direction not found");
-                        break;
+        if(args.length==0){
+            args = new String[1];
+            args[0] = "";
+        }
+        if(args[0].equals("-gamer")){
+             while (true) {
+    
+                while (turn) {
+                    System.out.println("White's turn :");
+                    switch (System.console().readLine().toUpperCase()) {
+                        case "W":
+                            move(Direction.N, player);
+                            break;
+                        case "D":
+                            move(Direction.O, player);
+                            break;
+                        case "S":
+                            move(Direction.S, player);
+                            break;
+                        case "A":
+                            move(Direction.W, player);
+                            break;
+                        case "E":
+                            move(Direction.NO, player);
+                            break;
+                        case "Q":
+                            move(Direction.SW, player);
+                            break;
+                        case "STOP":
+                            System.exit(0);
+                            break;
+                        default:
+                            System.out.println("Direction not found");
+                            break;
+                    }
+                }
+                while (!turn) {
+                    System.out.println("Black's turn :");
+                    switch (System.console().readLine().toUpperCase()) {
+                        case "W":
+                            move(Direction.N, player2);
+                            break;
+                        case "D":
+                            move(Direction.O, player2);
+                            break;
+                        case "S":
+                            move(Direction.S, player2);
+                            break;
+                        case "A":
+                            move(Direction.W, player2);
+                            break;
+                        case "E":
+                            move(Direction.NO, player2);
+                            break;
+                        case "Q":
+                            move(Direction.SW, player2);
+                            break;
+                        case "STOP":
+                            System.exit(0);
+                            break;
+                        default:
+                            System.out.println("Direction not found");
+                            break;
+                    }
                 }
             }
-            while (!turn) {
-                switch (System.console().readLine().toUpperCase()) {
-                    case "N":
-                        move(Direction.N, player2);
-                        break;
-                    case "O":
-                        move(Direction.O, player2);
-                        break;
-                    case "S":
-                        move(Direction.S, player2);
-                        break;
-                    case "W":
-                        move(Direction.W, player2);
-                        break;
-                    case "NO":
-                        move(Direction.NO, player2);
-                        break;
-                    case "SW":
-                        move(Direction.SW, player2);
-                        break;
-                    case "STOP":
-                        System.exit(0);
-                        break;
-                    default:
-                        System.out.println("Direction not found");
-                        break;
+        }else{
+
+            while (true) {
+    
+                while (turn) {
+                    System.out.println("White's turn :");
+                    switch (System.console().readLine().toUpperCase()) {
+                        case "N":
+                            move(Direction.N, player);
+                            break;
+                        case "O":
+                            move(Direction.O, player);
+                            break;
+                        case "S":
+                            move(Direction.S, player);
+                            break;
+                        case "W":
+                            move(Direction.W, player);
+                            break;
+                        case "NO":
+                            move(Direction.NO, player);
+                            break;
+                        case "SW":
+                            move(Direction.SW, player);
+                            break;
+                        case "STOP":
+                            System.exit(0);
+                            break;
+                        default:
+                            System.out.println("Direction not found");
+                            break;
+                    }
+                }
+                while (!turn) {
+                    System.out.println("Black's turn :");
+                    switch (System.console().readLine().toUpperCase()) {
+                        case "N":
+                            move(Direction.N, player2);
+                            break;
+                        case "O":
+                            move(Direction.O, player2);
+                            break;
+                        case "S":
+                            move(Direction.S, player2);
+                            break;
+                        case "W":
+                            move(Direction.W, player2);
+                            break;
+                        case "NO":
+                            move(Direction.NO, player2);
+                            break;
+                        case "SW":
+                            move(Direction.SW, player2);
+                            break;
+                        case "STOP":
+                            System.exit(0);
+                            break;
+                        default:
+                            System.out.println("Direction not found");
+                            break;
+                    }
                 }
             }
         }
@@ -88,7 +159,7 @@ public class Board {
             case N:
                 if (x == 0 || g_board[x - 1][y].toString().equals("W") || g_board[x - 1][y].toString().equals("B")) {
                     System.out.println("You can't move there");
-                    System.console().readLine();
+                    //System.console().readLine();
                 } else {
 
                     g_board[x - 1][y] = g_board[x][y];
@@ -101,7 +172,7 @@ public class Board {
             case S:
                 if (x == 7 || g_board[x + 1][y].toString().equals("W") || g_board[x + 1][y].toString().equals("B")) {
                     System.out.println("You can't move there");
-                    System.console().readLine();
+                    //System.console().readLine();
                 } else {
 
                     g_board[x + 1][y] = p.toString();
@@ -114,7 +185,7 @@ public class Board {
             case O:
                 if (y == 7 || g_board[x][y + 1].toString().equals("W") || g_board[x][y + 1].toString().equals("B")) {
                     System.out.println("You can't move there");
-                    System.console().readLine();
+                    //System.console().readLine();
                 } else {
 
                     g_board[x][y + 1] = g_board[x][y];
@@ -127,7 +198,7 @@ public class Board {
             case W:
                 if (y == 0 || g_board[x][y - 1].toString().equals("W") || g_board[x][y - 1].toString().equals("B")) {
                     System.out.println("You can't move there");
-                    System.console().readLine();
+                    //System.console().readLine();
                 } else {
 
                     g_board[x][y - 1] = g_board[x][y];
@@ -141,10 +212,10 @@ public class Board {
                 if (x == 7 || y == 7 || g_board[x + 1][y + 1].toString().equals("W")
                         || g_board[x + 1][y + 1].toString().equals("B")) {
                     System.out.println("You can't move there");
-                    System.console().readLine();
+                    //System.console().readLine();
                 } else if (p == Player.White) {
                     System.out.println("Only Black can move that way");
-                    System.console().readLine();
+                    //System.console().readLine();
                 } else {
 
                     g_board[x - 1][y + 1] = g_board[x][y];
@@ -155,13 +226,13 @@ public class Board {
                 }
                 break;
             case SW:
-                if (x == 7 || y == 0 || g_board[x + 1][y - 1].toString().equals("W")
-                        || g_board[x + 1][y - 1].toString().equals("B")) {
+                if (x == 0 || y == 7 || g_board[x - 1][y + 1].toString().equals("W")
+                        || g_board[x - 1][y + 1].toString().equals("B")) {
                     System.out.println("You can't move there");
                 }
                 if (p == Player.Black) {
                     System.out.println("Only White can move that way");
-                    System.console().readLine();
+                    //System.console().readLine();
                 } else {
 
                     g_board[x - 1][y + 1] = g_board[x][y];
@@ -259,7 +330,7 @@ public class Board {
     }
 
     public static void actualizeBoard() {
-        for (int i = 2; i < 21; i++) {
+        for (int i = 2; i < 24; i++) {
             System.out.print("\033[2K");
             System.out.print("\033[" + (i) + ";1H");
             try {
@@ -271,11 +342,6 @@ public class Board {
         }
         System.out
                 .println(player.toString() + ": " + player.score() + " " + player2.toString() + ": " + player2.score());
-        if (turn) {
-            System.out.println("White's turn");
-        } else {
-            System.out.println("Black's turn");
-        }
         System.out.print("\033[2;1H");
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
